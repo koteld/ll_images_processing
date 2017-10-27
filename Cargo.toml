@@ -1,0 +1,6 @@
+[package]
+name = "img_processing"
+version = "0.1.0"
+authors = ["koteld"]
+
+[dependencies]
