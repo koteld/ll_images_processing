@@ -44,17 +44,5 @@ fn invert (pixel_data: &mut [u8], length: usize) {
 // }
 
 fn main() {
-    // let mut vector: Vec<u8>;
-    // vector = Vec::new();    
-    // vector.push(0);
-    // vector.push(1);
-    // vector.push(1);
-    // vector.push(1);
-
-    //assert_eq!([1, 2], &array[1..]);
-
-    // gray_scale(&mut vector);
-    
-    // print!("{} {}", vector[1], vector[2]); 
 
 }
