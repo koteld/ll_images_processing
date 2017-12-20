@@ -2,6 +2,25 @@
     'use strict';
 
     const URL = window.webkitURL || window.URL;    
+<<<<<<< HEAD
+    const wasm = require('./main.rs')  
+    
+    let wmodule;  
+    let grayScale, invert, noise, sobelFilter, brighten;
+
+    async function loadWasm() {
+        wasm.initialize({noExitRuntime: true}).then(module => {
+            wmodule = module;
+            grayScale     = module.cwrap('gray_scale', 'number', ['number', 'number']);    
+            invert        = module.cwrap('invert', 'number', ['number', 'number']);    
+            noise         = module.cwrap('noise', 'number', ['number', 'number']);    
+            brighten      = module.cwrap('brighten', 'number', ['number', 'number', 'number']);    
+            sobelFilter   = module.cwrap('sobel_filter', 'number', ['number', 'number', 'number', 'number'])
+        })   
+    }
+
+    loadWasm()   
+=======
     const wasm = require('./main.rs')    
     let grayScale
     // let invert
@@ -76,5 +95,6 @@
     // }
 
     // loadWasm()   
+>>>>>>> dfc0fa178591c2bc7effc4f0a183141f814556d5
 
 }());

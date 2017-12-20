@@ -1,0 +1,56 @@
+(function () {
+    'use strict';
+
+    const URL = window.webkitURL || window.URL;    
+
+    const wasm = __webpack_require__(73)
+    let grayScale
+    let invert
+
+    window.onload = function () {
+        const input = document.getElementById('input');
+        input.addEventListener('change', handleFiles, false);
+    }
+
+    let pixels    
+
+    function handleFiles(e) {
+        const canvasElement = document.getElementById('canvas');
+        const ctx = canvasElement.getContext('2d');
+        const url = URL.createObjectURL(e.target.files[0]);
+        const img = new Image();
+
+        img.onload = function () {
+            const { width, height } = img;
+            canvasElement.width = width;
+            canvasElement.height = height;
+
+            ctx.drawImage(img, 0, 0, width, height);
+
+            pixels = ctx.getImageData(0, 0, width, height);   
+            
+            wasm.initialize({noExitRuntime: true}).then(module => {
+                const grayScale = module.cwrap('invert', 'number', ['number']);    
+                var buf = module._malloc(pixels.data.length * pixels.data.BYTES_PER_ELEMENT);
+                var dataHeap = new Uint8Array(module.HEAPU8.buffer, buf, pixels.data.length * pixels.data.BYTES_PER_ELEMENT);
+                dataHeap.set(new Uint8Array(pixels.data.buffer));
+                //module.HEAPU8.set(pixels.data, buf);
+                //module.ccall('gray_scale', 'number', ['number'], [buf]);
+                // const len = pixels.data.length;
+                // let data = pixels.data;
+                let res = grayScale(dataHeap.byteOffset, pixels.data.length);
+                var result = new Uint8Array(dataHeap.buffer, dataHeap.byteOffset, pixels.data.length);
+                // let data = module.getValue(buf, module.HEAPU8);
+                pixels.data.set(new Uint8ClampedArray(result));
+                ctx.putImageData(pixels, 0, 0);
+            })         
+
+
+
+        }
+
+        img.src = url;
+
+    }
+
+}());
