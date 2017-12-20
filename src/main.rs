@@ -7,7 +7,11 @@ use std::mem;
 pub fn gray_scale (pixel_data: *mut u8, length: isize) {
     let mut i = 0;
     unsafe {
+<<<<<<< HEAD
         while i + 3 <= length {
+=======
+        while i < length {
+>>>>>>> dfc0fa178591c2bc7effc4f0a183141f814556d5
             *pixel_data.offset(i + 1) = *pixel_data.offset(i);
             *pixel_data.offset(i + 2) = *pixel_data.offset(i);
             i += 4;
@@ -19,7 +23,11 @@ pub fn gray_scale (pixel_data: *mut u8, length: isize) {
 pub fn invert (pixel_data: *mut u8, length: isize) {
     let mut i = 0;
     unsafe {
+<<<<<<< HEAD
         while i + 3 <= length {
+=======
+        while i < length {
+>>>>>>> dfc0fa178591c2bc7effc4f0a183141f814556d5
             *pixel_data.offset(i) = 255_u8 - *pixel_data.offset(i);
             *pixel_data.offset(i + 1) = 255_u8 - *pixel_data.offset(i + 1);
             *pixel_data.offset(i + 2) = 255_u8 - *pixel_data.offset(i + 2);
@@ -34,7 +42,11 @@ pub fn noise (pixel_data: *mut u8, length: isize) {
     let mut rng = rand::thread_rng();
     let mut random: u8;
     unsafe {
+<<<<<<< HEAD
         while i + 3 <= length {
+=======
+        while i < length {
+>>>>>>> dfc0fa178591c2bc7effc4f0a183141f814556d5
             random = (rng.gen::<u8>() % 70).saturating_sub(35);
             *pixel_data.offset(i) = (*pixel_data.offset(i)).saturating_add(random);
             *pixel_data.offset(i + 1) = (*pixel_data.offset(i + 1)).saturating_add(random);
@@ -49,7 +61,11 @@ pub fn noise (pixel_data: *mut u8, length: isize) {
 pub fn brighten (pixel_data: *mut u8, length: isize, brightness: u8) {
     let mut i = 0;
     unsafe {
+<<<<<<< HEAD
         while i + 3 <= length {
+=======
+        while i < length {
+>>>>>>> dfc0fa178591c2bc7effc4f0a183141f814556d5
             *pixel_data.offset(i) = (*pixel_data.offset(i)).saturating_add(brightness);   
             *pixel_data.offset(i + 1) = (*pixel_data.offset(i + 1)).saturating_add(brightness);   
             *pixel_data.offset(i + 2) = (*pixel_data.offset(i + 2)).saturating_add(brightness);   
