@@ -1,4 +1,6 @@
-/target/
+./git/*
+./build/*
+./target/*
 **/*.rs.bk
-*/.vscode/*
-*/node_modules/*
+./.vscode/*
+./node_modules/*
