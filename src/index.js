@@ -1,7 +1,6 @@
 (function () {
     'use strict';
 
-    const URL = window.webkitURL || window.URL;    
     const wasm = require('./main.rs')  
     
     let wmodule;  
