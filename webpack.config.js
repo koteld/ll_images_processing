@@ -1,5 +1,4 @@
 module.exports = {
-    target: "web",
     entry: './src/index.js',
     output: {
       filename: 'bundle.js',
@@ -27,4 +26,3 @@ module.exports = {
       'path': true,
     }
   }
-  

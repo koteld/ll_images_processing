@@ -128,7 +128,10 @@ pub fn sobel_filter (pixel_data: *mut u8, width: isize, height: isize, invert: b
                 *pixel_data.offset(offset + 3) = 255;
             }
         }
-    }    
+    }   
+    unsafe {
+        libc::free(gray_data as *mut libc::c_void);
+    }
 }
 
 fn main() {

@@ -1,11 +1,14 @@
 {
   "name": "ll_image_processing",
-  "version": "0.0.1",
-  "description": "ll_image_processing wasm (rust+js)",
+  "version": "1.0.0",
+  "description": "csc-2017 project",
   "main": "webpack.config.js",
-  "directories": {
-    "example": "examples"
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "rust-wasm-loader": "^0.1.2",
+    "webpack": "^3.11.0"
   },
+  "devDependencies": {},
   "scripts": {
     "compile": "webpack --progress",
     "serve": "http-server"
@@ -14,21 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/koteld/ll_images_processing.git"
   },
-  "keywords": [
-    "wasm",
-    "rust",
-    "js",
-    "csc"
-  ],
-  "author": "koteld",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/koteld/ll_images_processing/issues"
   },
-  "homepage": "https://github.com/koteld/ll_images_processing#readme",
-  "devDependencies": {
-    "http-server": "^0.10.0",
-    "rust-wasm-loader": "^0.1.2",
-    "webpack": "^3.10.0"
-  }
+  "homepage": "https://github.com/koteld/ll_images_processing#readme"
 }
